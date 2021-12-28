@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 
-const connect = () => {
+const connect = () =>  {
     return mongoose.connect(process.env.MONOGDB)
 }
 
