@@ -19,7 +19,7 @@ router.post('', async (req, res) => {
 router.get('', async (req, res) => {
     try {
         const page = req.query.page || 1;
-        const size = req.query.limit || 1;
+        const size = req.query.limit || 5;
         const offSet = (page - 1) * size;
 
         const contests = await Contest.find().skip(offSet).limit(size).lean().exec();
