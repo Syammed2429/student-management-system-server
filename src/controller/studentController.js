@@ -4,6 +4,8 @@ const Student = require('../model/studentsModel')
 
 
 router.post('', async (req, res) => {
+    const students = await Student.find(req.body)
+    if (students != '') return res.status(400).send("Already added")
     const student = await Student.create(req.body);
     return res.status(201).send(student)
 })
