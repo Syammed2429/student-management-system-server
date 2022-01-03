@@ -18,11 +18,11 @@ router.post('', async (req, res) => {
 
 router.get('', async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const size = req.query.limit || 5;
+        const page = +req.query.page || 1;
+        const size = +req.query.limit || 5;
         const offSet = (page - 1) * size;
 
-        const contests = await Contest.find().skip(offSet).limit(size).lean().exec();
+        const contests = await Contest.find().limit(size).skip(offSet).lean().exec();
         const totalContestsCount = await Contest.find().countDocuments();
         const totalPages = Math.ceil(totalContestsCount / size);
         return res.status(200).send({ contests, totalPages })
