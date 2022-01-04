@@ -16,6 +16,8 @@ router.post('', async (req, res) => {
     }
 })
 
+
+
 router.get('', async (req, res) => {
     try {
         const page = +req.query.page || 1;
@@ -32,6 +34,10 @@ router.get('', async (req, res) => {
 
     }
 });
+
+
+
+
 
 router.delete('/:id', async (req, res) => {
     const contest = await Contest.findByIdAndDelete(req.params.id);
